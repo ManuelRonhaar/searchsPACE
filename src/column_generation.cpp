@@ -365,7 +365,7 @@ int main() {
         }
 
         start = std::chrono::high_resolution_clock::now();
-        rmp.solver->SetTimeLimit(absl::Seconds(column_generation_duration+10 - std::chrono::duration<double>(start - program_start).count()));
+        rmp.solver->SetTimeLimit(absl::Seconds(column_generation_duration+1 - std::chrono::duration<double>(start - program_start).count()));
         auto result_status = rmp.solver->Solve();
         end = std::chrono::high_resolution_clock::now();
         lp_time += std::chrono::duration<double>(end - start).count();
@@ -469,7 +469,7 @@ int main() {
         LOG(INFO) << "Staring ILP solver with " << columns.size() << " columns";
 
         auto start = std::chrono::high_resolution_clock::now();
-        rmp.solver->SetTimeLimit(absl::Seconds(290 - std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - program_start).count()));
+        rmp.solver->SetTimeLimit(absl::Seconds(280 - std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - program_start).count()));
         auto result_status = rmp.solver->Solve();
         auto end = std::chrono::high_resolution_clock::now();
         LOG(INFO) << "IP solve time: " << std::chrono::duration<double>(end - start).count();
